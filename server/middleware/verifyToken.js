@@ -9,6 +9,8 @@ const verifyToken = async (req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
       if (err) return res.status(401).json("Not Authenticated.");
       req.user = await User.findById(decoded.id);
+
+      next();
     });
   } catch (error) {
     console.log(error);
