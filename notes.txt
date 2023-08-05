@@ -1,1 +1,4 @@
 NOTES 
+
+- When You Login, You Make a Token with a ID that will determine ur account and then it goes to the backend and it is checked with id which is ur account, and then if anything is found u are logged IN!
+- When you login, the token is sent to middle ware and checked if there is a same token there and verifies that you a SEPRATE account and let u access ur shit
