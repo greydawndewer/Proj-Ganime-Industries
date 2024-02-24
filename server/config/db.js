@@ -1,10 +1,23 @@
-const mongoose = require("mongoose");
+const mysql = require('mysql');
 
 const connectDB = () => {
   try {
-    mongoose
-      .connect(process.env.MONGO_URI)
-      .then(() => console.log("connected to mongo db"));
+    var mysql = require('mysql');
+
+    var connection = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "Women=Badx1000",
+      database: "mf"
+    });
+    
+    connection.connect(function(err) {
+      if (err) {
+        console.error('Error connecting to MySQL:', err.message);
+        return;
+      }
+      console.log('Connected to MySQL');
+    });
   } catch (error) {
     console.log(error);
   }

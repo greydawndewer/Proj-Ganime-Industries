@@ -24,6 +24,6 @@ app.get("/protected", verifyToken, (req, res) => {
 
 app.use("/auth", userRoutes);
 
-app.listen(process.env.PORT, () => {
+app.listen(9000, () => {
   console.log(`server running on port ${process.env.PORT}`);
 });

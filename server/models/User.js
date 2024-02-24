@@ -1,15 +1,29 @@
-const mongoose = require("mongoose");
+const { Sequelize, DataTypes } = require('sequelize');
 
-const userSchema = new mongoose.Schema({
+// Define the sequelize instance and connect to the database
+const sequelize = new Sequelize('mf', 'root', 'Women=Badx1000', {
+  host: 'localhost',
+  dialect: 'mysql', // or 'postgres' for PostgreSQL
+});
+
+// Define the User model
+const User = sequelize.define('User', {
   username: {
-    type: String,
-    required: true,
+    type: DataTypes.STRING,
+    allowNull: false,
     unique: true,
   },
   password: {
-    type: String,
-    required: true,
+    type: DataTypes.STRING,
+    allowNull: false,
   },
 });
 
-module.exports = mongoose.model("User", userSchema);
+// Sync the model with the database
+(async () => {
+  await sequelize.sync();
+  console.log('Database synchronized');
+})();
+
+// Export the User model
+module.exports = User;
